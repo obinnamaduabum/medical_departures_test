@@ -1,6 +1,6 @@
 import Sequelize, { QueryTypes } from 'sequelize';
 import { mySqlDatabase } from "../database/mysql_db";
-import { Post } from "../model/post";
+import { Post } from "../entity/post";
 export class PostDao {
     static async findById(id: number): Promise<Post> {
         try {

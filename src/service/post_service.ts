@@ -1,4 +1,4 @@
-import { Post } from "../model/post";
+import { Post } from "../entity/post";
 import { PostModel } from "../model/post_model";
 import { PostDao } from "../dao/post_dao";
 

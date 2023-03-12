@@ -1,5 +1,5 @@
 import Sequelize, { QueryTypes } from 'sequelize';
-import { User } from "../model/user";
+import { User } from "../entity/user";
 import { mySqlDatabase } from "../database/mysql_db";
 import { UserModel } from "../model/user_model";
 

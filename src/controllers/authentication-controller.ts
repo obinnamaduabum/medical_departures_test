@@ -2,7 +2,7 @@ import { validationResult } from "express-validator";
 import { Request, Response } from 'express';
 import { ApiResponseUtil } from "../utils/api-response-util";
 import { AuthenticationUtils } from "../modules/auth/authentication_utils";
-import { User } from "../model/user";
+import { User } from "../entity/user";
 import { AuthService } from "../service/auth_service";
 import { UserService } from "../service/user_service";
 

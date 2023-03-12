@@ -2,7 +2,7 @@ import { mySqlDatabase } from "../database/mysql_db";
 import { Transaction } from "sequelize";
 import { BcryptPasswordUtil } from "../utils/bcrypt-password-util";
 import { UserModel } from "../model/user_model";
-import { User } from "../model/user";
+import { User } from "../entity/user";
 import { UserDao } from "../dao/user_dao";
 
 export class UserService {

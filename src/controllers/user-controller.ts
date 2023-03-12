@@ -4,7 +4,7 @@ import { ApiResponseUtil } from "../utils/api-response-util";
 import { UserService } from "../service/user_service";
 import { UserDao } from "../dao/user_dao";
 import { UserModel } from "../model/user_model";
-import { User } from "../model/user";
+import { User } from "../entity/user";
 
 export class UsersController {
 
