@@ -1,10 +1,10 @@
 import { validationResult } from 'express-validator';
 import { Request, Response } from "express";
-import { ApiResponseUtil } from "../../utils/api-response-util";
-import { UserService } from "../../service/user_service";
-import { UserDao } from "../../dao/user_dao";
-import { UserModel } from "../../model/user_model";
-import { User } from "../../model/user";
+import { ApiResponseUtil } from "../utils/api-response-util";
+import { UserService } from "../service/user_service";
+import { UserDao } from "../dao/user_dao";
+import { UserModel } from "../model/user_model";
+import { User } from "../model/user";
 
 export class UsersController {
 

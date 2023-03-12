@@ -38,13 +38,11 @@ export class UserDao {
         }
     }
 
-
-
     static async findById(id: number): Promise<User> {
         try {
             // @ts-ignore
             return await mySqlDatabase.query(
-                `SELECT * from user as u WHERE lower(u.id) = :id;`,
+                `SELECT * from user as u WHERE u.id = :id;`,
                 {
                     replacements: {
                         id: id,
@@ -59,9 +57,6 @@ export class UserDao {
             throw e;
         }
     }
-
-
-
 
     static async checkIfEmailExists(email: string) {
         return await mySqlDatabase.query(

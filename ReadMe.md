@@ -6,4 +6,5 @@ CREATE USER 'medical_departures_user'@'127.0.0.1' IDENTIFIED BY '!333435weekly19
 
 GRANT ALL ON *.* TO 'medical_departures_user'@'127.0.0.1';
 
-CREATE DATABASE IF NOT EXISTS medical_departures_db;
+CREATE DATABASE IF NOT EXISTS medical_departures_db;!
+[UML.png](UML.png)

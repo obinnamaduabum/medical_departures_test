@@ -9,6 +9,7 @@ import { InitStartUpActions } from "./start_up_actions/init_start_up_actions";
 import PublicUserRouter from "./routes/public/public_user_router";
 import ProtectedAuthenticationRouter from "./routes/protected/protected_authentication_router";
 import PublicAuthenticationRouter from "./routes/public/public_authentication_router";
+import ProtectedPostRouter from "./routes/protected/protected_post_router";
 const ip = require('ip');
 
 let customRouters: CustomRouterInterface[] = [
@@ -27,6 +28,10 @@ let customRouters: CustomRouterInterface[] = [
     {
         url: '/api/protected/auth',
         routerObj: new ProtectedAuthenticationRouter()
+    },
+    {
+        url: '/api/protected/posts',
+        routerObj: new ProtectedPostRouter()
     }
 ];
 

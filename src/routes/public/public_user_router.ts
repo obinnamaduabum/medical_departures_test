@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import { UsersController } from "../../controllers/user/user-controller";
+import { UsersController } from "../../controllers/user-controller";
 import { body } from "express-validator";
 
 class PublicUserRouter {

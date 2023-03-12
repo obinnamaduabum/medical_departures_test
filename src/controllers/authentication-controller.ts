@@ -6,7 +6,7 @@ import { User } from "../model/user";
 import { AuthService } from "../service/auth_service";
 import { UserService } from "../service/user_service";
 
-export class Authentication {
+export class AuthenticationController {
 
     static async logOut(req: Request, res: Response) {
 

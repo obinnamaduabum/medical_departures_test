@@ -6,7 +6,6 @@ import { User } from "../model/user";
 import { UserDao } from "../dao/user_dao";
 
 export class UserService {
-
     static async createUser(userInput: UserModel) {
 
         let transaction: Transaction = await mySqlDatabase.transaction();

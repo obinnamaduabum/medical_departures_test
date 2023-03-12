@@ -2,21 +2,8 @@ const psl = require('psl');
 
 export class MyUtils {
 
-    static formatString(str: string, ...val: string[]) {
-        for (let index = 0; index < val.length; index++) {
-            str = str.replace(`{${index}}`, val[index]);
-        }
-        return str;
-    }
-
     static removeWhiteSpace(input: string) {
         return input.replace(/\s+/g, '');
-    }
-
-    static numberWithCommas(x) {
-        let parts = x.toString().split(".");
-        parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-        return parts.join(".");
     }
 
     static async emailValidator(value: string) {
@@ -74,11 +61,9 @@ export class MyUtils {
 
     static indexOfArray(array: string[], origin: any) {
         // console.log('origin were searching for: ' + origin);
-        // // origin = 'http://185.177.59.79:8090/';
         const exactHostname = MyUtils.extractHostname(origin);
         // console.log('exactHostname: ' + exactHostname);
         const foundIndex = array.indexOf(exactHostname);
-        // console.log('found index: '+ foundIndex);
         return foundIndex;
     }
 
@@ -193,14 +178,21 @@ export class MyUtils {
         return result;
     }
 
-
-
     static pageOffsetCalculator(pageNumber: number, pageSize: number, index: number) {
         try {
             let result = pageNumber * pageSize + index + 1;
             return result;
         } catch (e) {
             return  0;
+        }
+    }
+
+
+    static stringToNumber(input: string): number | null {
+        try {
+           return  parseInt(input);
+        } catch (e) {
+           return  null;
         }
     }
 }

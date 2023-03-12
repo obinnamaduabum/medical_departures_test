@@ -46,4 +46,23 @@ export class ApiResponseUtil {
     }
 
 
+    static forbidden(res: Response, success = false, message: string = '', data: any = {},  errors: any = []) {
+        return res.status(403).send({
+            success: success,
+            message: message,
+            data: data,
+            errors: errors
+        });
+    }
+
+    static notFound(res: Response, message: string = 'not found') {
+        return res.status(404).send({
+            success: false,
+            message: message,
+            data: null,
+            errors: []
+        });
+    }
+
+
 }
