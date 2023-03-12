@@ -61,9 +61,9 @@ export class PostController {
 
             let post: Post = await PostService.findById(id);
 
-            const user: User = await post.getUser();
+            const user: User = await post?.getUser();
 
-            if(user.id !== verifyToken.id) {
+            if(user?.id !== verifyToken?.id) {
                 return ApiResponseUtil.forbidden(res, false, 'No access to perform operation');
             }
 

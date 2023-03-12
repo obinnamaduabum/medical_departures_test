@@ -4,7 +4,6 @@ import * as bodyParser from "body-parser";
 import cookieParser from 'cookie-parser';
 import cors from "cors";
 import { MyUtils } from "./utils/my_util";
-
 export class App {
     public app: Application;
     public port: number;
@@ -13,6 +12,7 @@ export class App {
     public allowedOrigins: string[] = [
         'localhost:8000',
         'localhost:3000',
+        'localhost:4000',
         'localhost:4200',
         'localhost:9876',
     ];
