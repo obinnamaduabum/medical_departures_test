@@ -61,6 +61,10 @@ export class PostController {
 
             let post: Post = await PostService.findById(id);
 
+            if(!post) {
+                return ApiResponseUtil.notFound(res, 'Post not found')
+            }
+
             const user: User = await post?.getUser();
 
             if(user?.id !== verifyToken?.id) {

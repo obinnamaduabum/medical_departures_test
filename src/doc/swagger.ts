@@ -17,7 +17,7 @@ export const swaggerDocument = {
             id: {
                 type: "number",
                 description: "The post id",
-                example: "9",
+                example: "10",
             },
             userName: {
                 type: "string",
