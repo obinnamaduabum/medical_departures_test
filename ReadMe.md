@@ -1,4 +1,7 @@
 
+AWS URL: **https://7f8ywnl4g5.execute-api.us-east-1.amazonaws.com/dev/api-docs**
+
+
 
 
 CREATE USER 'medical_departures_user'@'127.0.0.1' IDENTIFIED BY '!333435weekly193#';

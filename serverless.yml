@@ -1,0 +1,32 @@
+service: backend
+frameworkVersion: '3'
+
+useDotenv: true
+
+provider:
+  name: aws
+  runtime: nodejs12.x
+  memorySize: 2048
+  timeout: 15
+  region: us-east-1
+
+#package:
+#  exclude:
+#    - node_modules/**
+
+functions:
+  hello:
+    handler: handler.hello
+    events:
+      - http: ANY /{proxy+}
+      - http: ANY /
+    environment:
+      HOSTNAME: "https://7f8ywnl4g5.execute-api.us-east-1.amazonaws.com/dev/"
+      PORT: 4000
+      MYSQL_HOST: "medicaldeparturesdb.csfdkrsh05be.us-east-1.rds.amazonaws.com"
+      MYSQL_USER: "medical_depa"
+      MYSQL_DATABASE: "medical_departures_db"
+      MYSQL_PASSWORD: "!333435weekly193#"
+      MYSQL_PORT: 3306
+      COOKIE_NAME: "medical_departures"
+      IS_AWS_DEPLOYMENT: true

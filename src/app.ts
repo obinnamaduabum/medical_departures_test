@@ -4,7 +4,13 @@ import * as bodyParser from "body-parser";
 import cookieParser from 'cookie-parser';
 import cors from "cors";
 import { MyUtils } from "./utils/my_util";
-export class App {
+import IndexRouter from "./routes/index_router";
+import PublicUserRouter from "./routes/public/public_user_router";
+import PublicAuthenticationRouter from "./routes/public/public_authentication_router";
+import ProtectedAuthenticationRouter from "./routes/protected/protected_authentication_router";
+import ProtectedPostRouter from "./routes/protected/protected_post_router";
+const ip = require('ip');
+class App {
     public app: Application;
     public port: number;
     public hostName: string;
@@ -17,15 +23,32 @@ export class App {
         'localhost:9876',
     ];
 
-    constructor(controllers: CustomRouterInterface[], port: number, hostName: string) {
+    constructor() {
         this.app = express();
-        this.port = port;
-        this.hostName = hostName;
+
+        const myIP = ip.address();
+
+        let HOSTNAME = `${myIP}`;
+        if(process.env.NODE_ENV === 'development'){
+            if(process.env.HOSTNAME) {
+                HOSTNAME = process.env.HOSTNAME;
+            }
+        }
+
+        let PORT
+        if (process.env.PORT) {
+            PORT = parseInt(process.env.PORT);
+        } else {
+            PORT = 3000;
+        }
+
+        this.port = PORT;
+        this.hostName = HOSTNAME;
         if (process.env.NODE_ENV === 'development') {
            // this.app.use(logger('dev')); // log requests to the console
         }
         this.initializeMiddleWares();
-        this.initializeControllers(controllers);
+        this.initializeControllers();
     }
 
     private initializeMiddleWares() {
@@ -36,7 +59,6 @@ export class App {
 
             origin: function (origin, callback) {
                 // allow requests with no origin
-                // (like mobile apps or curl requests)
                 if (!origin) {
                     return callback(null, true);
                 }
@@ -54,10 +76,33 @@ export class App {
         this.app.use(myCors);
     }
 
-    private initializeControllers(controllers: CustomRouterInterface[]) {
-        controllers.forEach((controller) => {
-            if (controller) {
-                this.app.use(controller.url, controller.routerObj.router);
+    private initializeControllers() {
+        const routers: CustomRouterInterface[] = [
+            {
+                url: '/',
+                routerObj: new IndexRouter()
+            },
+            {
+                url: '/api/public/users',
+                routerObj: new PublicUserRouter()
+            },
+            {
+                url: '/api/public/auth',
+                routerObj: new PublicAuthenticationRouter()
+            },
+            {
+                url: '/api/protected/auth',
+                routerObj: new ProtectedAuthenticationRouter()
+            },
+            {
+                url: '/api/protected/posts',
+                routerObj: new ProtectedPostRouter()
+            }
+        ];
+
+        routers.forEach((router) => {
+            if (router) {
+                this.app.use(router.url, router.routerObj.router);
             }
         });
     }
@@ -70,3 +115,5 @@ export class App {
         });
     }
 }
+
+export default new App().app;
