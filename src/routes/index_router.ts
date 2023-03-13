@@ -1,6 +1,6 @@
 import { Router } from "express";
 import { IndexController } from "../controllers/index-controller";
-import { swaggerDocument, swaggerDocumentForAWS } from "../doc/swagger";
+import { swaggerDocument } from "../doc/swagger";
 const swaggerUi = require('swagger-ui-express');
 
 class IndexRouter {
@@ -11,8 +11,7 @@ class IndexRouter {
         this.router = Router();
         this.router.get('/',  IndexController.index);
         this.router.use('/api-docs', swaggerUi.serve);
-        const isAWS = process.env.IS_AWS_DEPLOYMENT;
-        this.router.get('/api-docs', swaggerUi.setup(isAWS ? swaggerDocumentForAWS : swaggerDocument));
+        this.router.get('/api-docs', swaggerUi.setup(swaggerDocument));
     }
 }
 

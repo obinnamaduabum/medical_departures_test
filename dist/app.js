@@ -44,7 +44,8 @@ class App {
             'localhost:3000',
             'localhost:4000',
             'localhost:4200',
-            'localhost:9876',
+            'df4o85snh6.execute-api.us-east-1.amazonaws.com:4000',
+            'df4o85snh6.execute-api.us-east-1.amazonaws.com'
         ];
         this.app = (0, express_1.default)();
         const myIP = ip.address();
@@ -89,7 +90,8 @@ class App {
             exposedHeaders: ['Content-Length', 'X-Foo', 'X-Bar'],
             credentials: true,
         });
-        this.app.use(myCors);
+        // this.app.use(myCors);
+        this.app.use((0, cors_1.default)({ origin: '*' }));
     }
     initializeControllers() {
         const routers = [

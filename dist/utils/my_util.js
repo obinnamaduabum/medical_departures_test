@@ -62,11 +62,8 @@ class MyUtils {
         }
     }
     static indexOfArray(array, origin) {
-        // console.log('origin were searching for: ' + origin);
         const exactHostname = MyUtils.extractHostname(origin);
-        // console.log('exactHostname: ' + exactHostname);
-        const foundIndex = array.indexOf(exactHostname);
-        return foundIndex;
+        return array.indexOf(exactHostname);
     }
     static toTimeStamp(date) {
         const datum = new Date(date);

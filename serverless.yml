@@ -1,4 +1,4 @@
-service: backend
+service: medical-departures
 frameworkVersion: '3'
 
 useDotenv: true
@@ -29,4 +29,4 @@ functions:
       MYSQL_PASSWORD: "!333435weekly193#"
       MYSQL_PORT: 3306
       COOKIE_NAME: "medical_departures"
-      IS_AWS_DEPLOYMENT: true
+      IS_AWS_DEPLOYMENT: "true"

@@ -1,7 +1,60 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.swaggerDocument = void 0;
+exports.swaggerDocument = exports.awsPath = exports.mainPath = void 0;
 const posts_swagger_1 = require("../openAPI/posts.swagger");
+exports.mainPath = {
+    "/api/public/users/create": {
+        "post": posts_swagger_1.signUp
+    },
+    "/api/public/auth/login": {
+        "post": posts_swagger_1.login
+    },
+    "/api/protected/auth/me": {
+        "get": posts_swagger_1.getMe
+    },
+    "/api/protected/auth/logout": {
+        "get": posts_swagger_1.logOut
+    },
+    "/api/protected/posts/create": {
+        "post": posts_swagger_1.createPost
+    },
+    "/api/protected/posts/{id}": {
+        "get": posts_swagger_1.getPosts,
+    },
+    "/api/protected/posts/remove/{id}": {
+        "delete": posts_swagger_1.deletePost,
+    },
+    "/api/protected/posts/update/{id}": {
+        "post": posts_swagger_1.updatePost,
+    },
+};
+exports.awsPath = {
+    "/dev/api/public/users/create": {
+        "post": posts_swagger_1.signUp
+    },
+    "/dev/api/public/auth/login": {
+        "post": posts_swagger_1.login
+    },
+    "/dev/api/protected/auth/me": {
+        "get": posts_swagger_1.getMe
+    },
+    "/dev/api/protected/auth/logout": {
+        "get": posts_swagger_1.logOut
+    },
+    "/dev/api/protected/posts/create": {
+        "post": posts_swagger_1.createPost
+    },
+    "/dev/api/protected/posts/{id}": {
+        "get": posts_swagger_1.getPosts,
+    },
+    "/dev/api/protected/posts/remove/{id}": {
+        "delete": posts_swagger_1.deletePost,
+    },
+    "/dev/api/protected/posts/update/{id}": {
+        "post": posts_swagger_1.updatePost,
+    },
+};
+const isAWS = process.env.IS_AWS_DEPLOYMENT;
 exports.swaggerDocument = {
     openapi: '3.0.1',
     info: {
@@ -165,30 +218,5 @@ exports.swaggerDocument = {
             }
         }
     },
-    paths: {
-        "/api/public/users/create": {
-            "post": posts_swagger_1.signUp
-        },
-        "/api/public/auth/login": {
-            "post": posts_swagger_1.login
-        },
-        "/api/protected/auth/me": {
-            "get": posts_swagger_1.getMe
-        },
-        "/api/protected/auth/logout": {
-            "get": posts_swagger_1.logOut
-        },
-        "/api/protected/posts/create": {
-            "post": posts_swagger_1.createPost
-        },
-        "/api/protected/posts/{id}": {
-            "get": posts_swagger_1.getPosts,
-        },
-        "/api/protected/posts/remove/{id}": {
-            "delete": posts_swagger_1.deletePost,
-        },
-        "/api/protected/posts/update/{id}": {
-            "post": posts_swagger_1.updatePost,
-        },
-    }
+    paths: isAWS === 'true' ? exports.awsPath : exports.mainPath
 };
