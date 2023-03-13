@@ -1,4 +1,9 @@
 
+To run application kindl see package.json
+
+npm run dev # run dev
+npm run deploy # aws deployment 
+
 AWS URL: **https://df4o85snh6.execute-api.us-east-1.amazonaws.com/dev/api-docs/**
 
 
